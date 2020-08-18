@@ -1,0 +1,27 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 40px 5%;
+  margin: 0 auto;
+}
+
+::selection {
+  background-color: #673ab7;
+  color: white;
+}

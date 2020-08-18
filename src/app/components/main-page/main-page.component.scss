@@ -1,0 +1,13 @@
+.spinner {
+  margin: 40px auto;
+}
+
+.no-data {
+  font-size: 18px;
+  text-align: center;
+  margin: 40px 0;
+
+  &__query {
+    font-weight: bold;
+  }
+}

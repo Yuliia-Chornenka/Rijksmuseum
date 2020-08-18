@@ -1,0 +1,16 @@
+.form {
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+
+  &__search {
+    width: 400px;
+  }
+
+  &__sort {
+    width: 250px;
+  }
+}
+

@@ -1,0 +1,28 @@
+@import "src/app/styles/variables";
+
+.collection {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+  &__item {
+    position: relative;
+    margin: 0 0 20px 0;
+    cursor: pointer;
+
+    &--img {
+      display: block;
+      width: 220px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    &--title {
+      width: 210px;
+      padding: 5px;
+      background-color: $secondColor;
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}

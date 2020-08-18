@@ -1,0 +1,5 @@
+<button mat-raised-button
+        [color]="isItemFavorite ? 'warn' : ''"
+        [innerText]="isItemFavorite ? 'Remove from favorite' : 'Mark as favorite'"
+        (click)="toogleFavoriteItem(collectionItem)">
+</button>

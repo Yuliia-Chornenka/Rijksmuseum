@@ -1,0 +1,85 @@
+<div class="container content">
+  <mat-spinner class="spinner" *ngIf="isDataLoading"></mat-spinner>
+
+  <ng-container *ngIf="!isDataLoading">
+    <div class="content__img-wrapper">
+      <img
+        src="{{ collectionItem?.artObject.webImage ? collectionItem?.artObject.webImage.url : '/assets/no-image.png' }}"
+        alt="{{ collectionItem?.artObject.title }}"
+        class="content__img">
+
+      <app-btn-favorite
+        [collectionItem]="collectionItem"
+        [itemId]="itemId">
+      </app-btn-favorite>
+
+    </div>
+
+    <div class="content__text">
+      <h3 class="content__title">
+        {{ collectionItem?.artObject.title }}
+      </h3>
+      <p class="content__description">
+        {{ collectionItem?.artObject.description }}
+      </p>
+
+      <div class="content__detail">
+        <ul>
+          <li><span
+            class="content__detail--bold">Category:</span> {{ collectionItem?.artObject.objectTypes.join(' , ') }}
+          </li>
+          <li><span class="content__detail--bold">Artist:</span> {{ collectionItem?.artObject.principalMaker}} </li>
+          <li><span class="content__detail--bold">Dating:</span> {{ collectionItem?.artObject.dating.presentingDate }}
+          </li>
+          <li><span
+            class="content__detail--bold">Physical features:</span> {{ collectionItem?.artObject.physicalMedium}}
+          </li>
+          <li><span class="content__detail--bold">Material:</span> {{ collectionItem?.artObject.materials.join(' & ')}}
+          </li>
+          <li><span class="content__detail--bold">Measurements:</span> {{ collectionItem?.artObject.subTitle }} </li>
+        </ul>
+
+        <p class="content__detail--bold">Subject (tags):</p>
+        <p *ngIf="collectionItem?.artObject.classification.iconClassDescription.length"
+           class="content__detail--bold">
+          What:
+        </p>
+        <ul class="tags__list">
+          <li *ngFor="let tagWhat of collectionItem?.artObject.classification.iconClassDescription">
+            {{ tagWhat }}
+          </li>
+        </ul>
+
+        <p class="content__detail--bold"
+           *ngIf="collectionItem?.artObject.classification.periods.length">
+          When:
+        </p>
+        <ul class="tags__list">
+          <li *ngFor="let tagWhen of collectionItem?.artObject.classification.periods">
+            {{ tagWhen }}
+          </li>
+        </ul>
+
+        <p class="content__detail--bold"
+           *ngIf="collectionItem?.artObject.classification.places.length">
+          Where:
+        </p>
+        <ul class="tags__list">
+          <li *ngFor="let tagWhere of collectionItem?.artObject.classification.places">
+            {{ tagWhere }}
+          </li>
+        </ul>
+
+        <p class="content__detail--bold"
+           *ngIf="collectionItem?.artObject.classification.people.length">
+          Who:
+        </p>
+        <ul class="tags__list">
+          <li *ngFor="let tagWho of collectionItem?.artObject.classification.people">
+            {{ tagWho }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </ng-container>
+</div>

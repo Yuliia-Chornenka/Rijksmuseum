@@ -1,0 +1,49 @@
+.content {
+  display: flex;
+  justify-content: space-between;
+
+  &__wrapper {
+    width: 700px;
+  }
+
+  &__img {
+    width: 30%;
+    object-fit: cover;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  &__description {
+    font-size: 14px;
+
+    &-wrapper {
+      width: 65%;
+    }
+  }
+}
+
+.btn {
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  &__favorite {
+    width: 30%;
+    text-align: center;
+  }
+
+  &__close {
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.spinner {
+  margin: 40px auto;
+}

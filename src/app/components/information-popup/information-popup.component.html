@@ -1,0 +1,38 @@
+<div class="content__wrapper">
+  <mat-spinner class="spinner" *ngIf="isDataLoading"></mat-spinner>
+
+  <ng-container  *ngIf="!isDataLoading">
+    <mat-dialog-content class="content">
+      <img src="{{ collectionItem?.artObject.webImage ? collectionItem?.artObject.webImage.url : '/assets/no-image.png' }}"
+           alt="{{ collectionItem?.artObject.title }}"
+           class="content__img">
+
+      <div class="content__description-wrapper">
+        <h3 class="content__title">
+          {{ collectionItem?.artObject.title }}
+        </h3>
+        <p class="content__description">
+          {{ collectionItem?.artObject.description }}
+        </p>
+      </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions class="btn__wrapper">
+      <div class="btn__favorite">
+        <app-btn-favorite
+          [collectionItem]="collectionItem"
+          [itemId]="data.itemId"
+        >
+        </app-btn-favorite>
+      </div>
+      <div class="btn__close">
+        <a mat-raised-button mat-dialog-close color="accent"
+           routerLink="/detail/{{ collectionItem?.artObject.objectNumber }}">
+          View more details
+        </a>
+        <button mat-raised-button mat-dialog-close cdkFocusInitial>Close</button>
+      </div>
+    </mat-dialog-actions>
+  </ng-container>
+</div>
+

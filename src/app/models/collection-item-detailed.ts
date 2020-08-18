@@ -1,0 +1,74 @@
+export interface ICollectionItemDetailed {
+  artObject: {
+    acquisition: {};
+    artistRole: null;
+    associations: [];
+    catRefRPK: [];
+    classification: {
+      events: [];
+      iconClassDescription: []
+      iconClassIdentifier: [];
+      motifs: [];
+      objectNumbers: [];
+      people: [];
+      periods: [];
+      places: [];
+    };
+    colors: [];
+    colorsWithNormalization: [];
+    copyrightHolder: null;
+    dating: {
+      period: number;
+      presentingDate: string;
+      sortingDate: number;
+      yearEarly: number;
+      yearLate: number;
+    };
+    description: string;
+    dimensions: [];
+    documentation: [];
+    exhibitions: [];
+    hasImage: boolean;
+    historicalPersons: [];
+    id: string;
+    inscriptions: [];
+    label: {};
+    labelText: null;
+    language: string;
+    links: {};
+    location: string;
+    longTitle: string;
+    makers: [];
+    materials: [];
+    normalized32Colors: [];
+    normalizedColors: [];
+    objectCollection: [];
+    objectNumber: string;
+    objectTypes: [];
+    physicalMedium: string;
+    physicalProperties: []
+    plaqueDescriptionDutch: string;
+    plaqueDescriptionEnglish: string;
+    principalMaker: string;
+    principalMakers: [];
+    principalOrFirstMaker: string;
+    priref: string;
+    productionPlaces: []
+    scLabelLine: string;
+    showImage: boolean;
+    subTitle: string;
+    techniques: [];
+    title: string;
+    titles: []
+    webImage: {
+      guid: string;
+      height: number;
+      offsetPercentageX: number;
+      offsetPercentageY: number;
+      url: string;
+      width: number;
+    };
+  };
+  artObjectPage: {};
+  elapsedMilliseconds: number;
+}

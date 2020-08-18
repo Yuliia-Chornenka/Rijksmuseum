@@ -1,0 +1,23 @@
+<form [formGroup]="formSortSearch" (ngSubmit)="onSubmit()" class="form">
+  <mat-form-field class="form__search">
+    <mat-label>Search keyword...</mat-label>
+    <input matInput type="text" formControlName="searchValue">
+    <button mat-button matSuffix mat-icon-button type="submit">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-form-field class="form__sort">
+    <mat-label>Order by:</mat-label>
+    <mat-select formControlName="sortByField">
+        <mat-option *ngFor="let field of sortingFields" [value]="field">
+          {{ field | lowercase }}
+        </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="warn" (click)="resetForm()">
+    Reset all filters
+  </button>
+</form>
+
