@@ -4,7 +4,6 @@
 
   <ng-template #collection>
     <div *ngFor="let itemCollection of collectionList"
-         appImgHover
          class="collection__item">
         <img src="{{ itemCollection.headerImage.url ? itemCollection.headerImage.url : '/assets/no-image.png' }}"
              alt="{{ itemCollection.title }}"
@@ -17,9 +16,7 @@
     </div>
   </ng-template>
 
-
   <ng-template #collectionDetailed>
-
     <p *ngIf="!collectionListDetailed.length"
        class="no-favorites">
       No favorite items yet.
@@ -28,7 +25,6 @@
     <div *ngFor="let itemCollection of collectionListDetailed
           | search:query
           | sort:sortField:query"
-         appImgHover
          class="collection__item">
       <img
         src="{{ itemCollection.artObject.webImage.url ? itemCollection.artObject.webImage.url : '/assets/no-image.png' }}"

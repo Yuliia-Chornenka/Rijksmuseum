@@ -8,7 +8,6 @@ import { MaterialModule } from './material/material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { SearchPipe } from './pipes/search.pipe';
 import { SortPipe } from './pipes/sort.pipe';
-import { ImgHoverDirective } from './directives/img-hover.directive';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -35,7 +34,6 @@ import { BtnFavoriteComponent } from './components/btn-favorite/btn-favorite.com
     BtnFavoriteComponent,
     SearchPipe,
     SortPipe,
-    ImgHoverDirective
   ],
   imports: [
     BrowserModule,

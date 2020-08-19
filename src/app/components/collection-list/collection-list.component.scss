@@ -11,6 +11,10 @@
     margin: 0 10px 20px 10px;
     cursor: pointer;
 
+    &:hover .collection__item--title {
+      display: block;
+    }
+
     &--img {
       display: block;
       width: 220px;
@@ -24,7 +28,7 @@
       position: absolute;
       background-color: $secondColor;
       bottom: 0;
-      visibility: hidden;
+      display: none;
     }
   }
 }
