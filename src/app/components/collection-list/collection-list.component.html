@@ -4,16 +4,16 @@
 
   <ng-template #collection>
     <div *ngFor="let itemCollection of collectionList"
+         appImgHover
          class="collection__item">
-      <img src="{{ itemCollection.headerImage.url ? itemCollection.headerImage.url : '/assets/no-image.png' }}"
-           alt="{{ itemCollection.title }}"
-           class="collection__item--img"
-           (mouseover)="getLongTitle($event)"
-           (click)="openDialog(itemCollection.objectNumber)"
-      >
-      <div class="collection__item--title">
-        {{ itemCollection.longTitle }}
-      </div>
+        <img src="{{ itemCollection.headerImage.url ? itemCollection.headerImage.url : '/assets/no-image.png' }}"
+             alt="{{ itemCollection.title }}"
+             class="collection__item--img"
+             (click)="openDialog(itemCollection.objectNumber)"
+        >
+        <div class="collection__item--title">
+          {{ itemCollection.longTitle }}
+        </div>
     </div>
   </ng-template>
 
@@ -28,12 +28,12 @@
     <div *ngFor="let itemCollection of collectionListDetailed
           | search:query
           | sort:sortField:query"
+         appImgHover
          class="collection__item">
       <img
         src="{{ itemCollection.artObject.webImage.url ? itemCollection.artObject.webImage.url : '/assets/no-image.png' }}"
         alt="{{ itemCollection.artObject.title }}"
         class="collection__item--img"
-        (mouseover)="getLongTitle($event)"
         (click)="openDialog(itemCollection.artObject.objectNumber)"
       >
       <div class="collection__item--title">

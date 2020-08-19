@@ -21,9 +21,10 @@
     &--title {
       width: 210px;
       padding: 5px;
-      background-color: $secondColor;
       position: absolute;
+      background-color: $secondColor;
       bottom: 0;
+      visibility: hidden;
     }
   }
 }

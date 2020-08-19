@@ -8,6 +8,7 @@ import { MaterialModule } from './material/material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { SearchPipe } from './pipes/search.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { ImgHoverDirective } from './directives/img-hover.directive';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -18,7 +19,6 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { InformationPopupComponent } from './components/information-popup/information-popup.component';
 import { ItemDetailsPageComponent } from './components/item-details-page/item-details-page.component';
 import { BtnFavoriteComponent } from './components/btn-favorite/btn-favorite.component';
-import { MatChipsModule } from "@angular/material/chips";
 
 
 @NgModule({
@@ -34,7 +34,8 @@ import { MatChipsModule } from "@angular/material/chips";
     ItemDetailsPageComponent,
     BtnFavoriteComponent,
     SearchPipe,
-    SortPipe
+    SortPipe,
+    ImgHoverDirective
   ],
   imports: [
     BrowserModule,
@@ -44,7 +45,6 @@ import { MatChipsModule } from "@angular/material/chips";
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

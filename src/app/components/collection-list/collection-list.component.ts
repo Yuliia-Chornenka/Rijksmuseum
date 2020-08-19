@@ -31,7 +31,6 @@ export class CollectionListComponent implements OnInit {
   @Input() getNextPageCollection: (event) => PageEvent;
   @Input() isFavoriteOpen: boolean;
   pageEvent: PageEvent;
-  isLongTitle = false;
   subscriptions: Subscription = new Subscription();
 
   constructor(
@@ -44,18 +43,10 @@ export class CollectionListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  getLongTitle(event): void {
-    // console.log(event.target);
-    this.isLongTitle = true;
-  }
-
   openDialog(id: string): void {
     this.dialog.open(InformationPopupComponent, {
       disableClose: true,
-      data: {
-        itemId: id,
-      }
+      data: { itemId: id }
     });
   }
 }
