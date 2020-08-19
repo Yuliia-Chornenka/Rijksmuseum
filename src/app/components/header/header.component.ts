@@ -12,7 +12,7 @@ import { ICollectionItemDetailed } from '../../models/collection-item-detailed';
 export class HeaderComponent implements OnInit, OnDestroy {
 
   @Input() isFavoriteBtn: boolean;
-  @Output() collectionFavorites = new EventEmitter<{collectionFavorites: ICollectionItemDetailed[]; isFavoriteOpen: boolean}>();
+  @Output() collectionFavorites = new EventEmitter<{ collectionFavorites: ICollectionItemDetailed[]; isFavoriteOpen: boolean }>();
   isFavoriteOpen = false;
 
   subscriptions: Subscription = new Subscription();
@@ -36,5 +36,4 @@ export class HeaderComponent implements OnInit, OnDestroy {
       });
     }));
   }
-
 }

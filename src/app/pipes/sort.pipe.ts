@@ -5,7 +5,6 @@ import { ICollectionItemDetailed } from '../models/collection-item-detailed';
   name: 'sort'
 })
 export class SortPipe implements PipeTransform {
-
   transform(collectionList: ICollectionItemDetailed[], sortField: string, searchValue: string): ICollectionItemDetailed[] {
     switch (sortField.toLowerCase()) {
       case 'relevance':

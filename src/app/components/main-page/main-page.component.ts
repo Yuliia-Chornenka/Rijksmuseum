@@ -124,7 +124,6 @@ export class MainPageComponent implements OnInit, OnDestroy {
   }
 
   removeSelectedTag(): void {
-    this.type = '';
     this.router.navigate(['/'], { queryParams: {
         ps: 10,
         p: 1,

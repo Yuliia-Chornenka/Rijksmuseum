@@ -1,10 +1,10 @@
 @import "src/app/styles/variables";
 
 .collection {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    margin: 15px 0 0 -10px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 15px 0 0 -10px;
 
   &__item {
     position: relative;

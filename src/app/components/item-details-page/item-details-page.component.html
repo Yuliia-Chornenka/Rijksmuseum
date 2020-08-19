@@ -9,12 +9,10 @@
         src="{{ collectionItem?.artObject.webImage ? collectionItem?.artObject.webImage.url : '/assets/no-image.png' }}"
         alt="{{ collectionItem?.artObject.title }}"
         class="content__img">
-
       <app-btn-favorite
         [collectionItem]="collectionItem"
         [itemId]="itemId">
       </app-btn-favorite>
-
     </div>
 
     <div class="content__text">

@@ -5,7 +5,6 @@ import { ICollectionItemDetailed } from '../models/collection-item-detailed';
   name: 'search'
 })
 export class SearchPipe implements PipeTransform {
-
   transform(collectionList: ICollectionItemDetailed[], searchValue: string): ICollectionItemDetailed[] {
     if (!collectionList.length || searchValue === '') {
       return collectionList;
