@@ -8,6 +8,21 @@
     [isFavoriteOpen]="isFavoriteOpen">
   </app-sort-search-form>
 
+  <mat-chip-list>
+    <mat-chip *ngIf="!!type" color="primary" selected> Type: {{ type }}
+      <mat-icon matChipRemove (click)="removeSelectedTag()">cancel</mat-icon>
+    </mat-chip>
+    <mat-chip *ngIf="!!tagWhat" color="primary" selected> What: {{ tagWhat }}
+      <mat-icon matChipRemove (click)="removeSelectedTag()">cancel</mat-icon>
+    </mat-chip>
+    <mat-chip *ngIf="!!tagWhere" color="primary" selected> Where: {{ tagWhere }}
+      <mat-icon matChipRemove (click)="removeSelectedTag()">cancel</mat-icon>
+    </mat-chip>
+    <mat-chip *ngIf="!!tagWho" color="primary" selected> Who: {{ tagWho }}
+      <mat-icon matChipRemove (click)="removeSelectedTag()">cancel</mat-icon>
+    </mat-chip>
+  </mat-chip-list>
+
   <mat-spinner class="spinner" *ngIf="isDataLoading"></mat-spinner>
 
   <p *ngIf="!searchedCollectionCount && !isDataLoading" class="no-data">
@@ -24,6 +39,10 @@
                        [pageNumber]="pageNumber"
                        [pageSizeOptions]="pageSizeOptions"
                        [query]="query"
+                       [type]="type"
+                       [tagWhat]="tagWhat"
+                       [tagWhere]="tagWhere"
+                       [tagWho]="tagWho"
                        [sortField]="sortField"
                        [getNextPageCollection]="getNextPageCollection"
   >

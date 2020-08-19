@@ -18,6 +18,7 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { InformationPopupComponent } from './components/information-popup/information-popup.component';
 import { ItemDetailsPageComponent } from './components/item-details-page/item-details-page.component';
 import { BtnFavoriteComponent } from './components/btn-favorite/btn-favorite.component';
+import { MatChipsModule } from "@angular/material/chips";
 
 
 @NgModule({
@@ -35,15 +36,16 @@ import { BtnFavoriteComponent } from './components/btn-favorite/btn-favorite.com
     SearchPipe,
     SortPipe
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        RouterModule,
-        AppRoutingModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MaterialModule
-    ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    RouterModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    MatChipsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

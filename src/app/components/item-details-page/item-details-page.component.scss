@@ -68,6 +68,14 @@ ul {
   margin-top: 0;
 }
 
+a {
+  color: $mainColor;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .spinner {
   margin: 40px auto;
 }

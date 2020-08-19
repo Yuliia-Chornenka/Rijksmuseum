@@ -17,6 +17,10 @@ export class SortSearchFormComponent implements OnInit, OnDestroy {
 
   pageSize = 10;
   pageNumber = 1;
+  type = '';
+  tagWhat = '';
+  tagWhere = '';
+  tagWho = '';
   formSortSearch: FormGroup;
   sortingFields = [ 'type', 'relevance', 'chronologically (oldest first)',
     'chronologically (newest first)', 'artist (a-z)', 'artist (z-a)' ];
@@ -37,6 +41,10 @@ export class SortSearchFormComponent implements OnInit, OnDestroy {
     this.route.queryParams.subscribe((queryParam: Params) => {
       query = queryParam.q ? queryParam.q : '';
       sortField = queryParam.s ? getSortFieldQuery(queryParam.s) : 'type';
+      this.type = queryParam.type ? queryParam.type : '';
+      this.tagWhat = queryParam.tagWhat ? queryParam.tagWhat : '';
+      this.tagWhere = queryParam.tagWhere ? queryParam.tagWhere : '';
+      this.tagWho = queryParam.tagWho ? queryParam.tagWho : '';
 
       this.formSortSearch = new FormGroup({
         searchValue: new FormControl(query),
@@ -55,7 +63,8 @@ export class SortSearchFormComponent implements OnInit, OnDestroy {
     const {searchValue, sortByField} = this.formSortSearch.controls;
     const searchQuery = searchValue.value.toLowerCase();
     const sortField = getSortFieldValue(sortByField.value);
-    this.subscriptions.add(this.projectService.getCollection(this.pageSize, this.pageNumber, sortField, searchQuery)
+    this.subscriptions.add(this.projectService.getCollection
+    (this.pageSize, this.pageNumber, sortField, searchQuery, this.type, this.tagWhat, this.tagWhere, this.tagWho)
       .subscribe((searchedCollection: ICollection) => {
         this.searchedCollectionEvent.emit({
           searchedCollection,

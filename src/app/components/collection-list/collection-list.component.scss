@@ -2,12 +2,13 @@
 
 .collection {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
+    margin: 15px 0 0 -10px;
 
   &__item {
     position: relative;
-    margin: 0 0 20px 0;
+    margin: 0 10px 20px 10px;
     cursor: pointer;
 
     &--img {

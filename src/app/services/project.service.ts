@@ -21,16 +21,32 @@ export class ProjectService {
     }
   }
 
-  getCollection(itemsPerPage, pageNumber, sortField, query): Observable<ICollection> {
+  getCollection(itemsPerPage: number, pageNumber: number, sortField: string, query: string, type: string,
+                tagWhat: string, tagWhere: string, tagWho: string): Observable<ICollection> {
+    if (tagWhat) {
+      return this.http.get<ICollection>(`${this.showsUrl}/?key=${this.key}&q=${query}&type=${type}
+      &s=${sortField}&ps=${itemsPerPage}&p=${pageNumber}&f.classification.iconClassDescription.sort=${tagWhat}`);
+    }
+
+    if (tagWhere) {
+      return this.http.get<ICollection>(`${this.showsUrl}/?key=${this.key}&q=${query}&type=${type}
+      &s=${sortField}&ps=${itemsPerPage}&p=${pageNumber}&f.classification.places.sort=${tagWhere}`);
+    }
+
+    if (tagWho) {
+      return this.http.get<ICollection>(`${this.showsUrl}/?key=${this.key}&q=${query}&type=${type}
+      &s=${sortField}&ps=${itemsPerPage}&p=${pageNumber}&f.classification.people.sort=${tagWho}`);
+    }
+
     return this.http.get<ICollection>(`${this.showsUrl}/?key=${this.key}&q=${query}
-    &s=${sortField}&ps=${itemsPerPage}&p=${pageNumber}`);
+    &type=${type}&s=${sortField}&ps=${itemsPerPage}&p=${pageNumber}`);
   }
 
-  getCollectionItem(id): Observable<ICollectionItemDetailed> {
+  getCollectionItem(id: string): Observable<ICollectionItemDetailed> {
     return this.http.get<ICollectionItemDetailed>(`${this.showsUrl}/${id}?key=${this.key}`);
   }
 
-  addFavoriteItem(item): Observable<ICollectionItemDetailed> {
+  addFavoriteItem(item: ICollectionItemDetailed): Observable<ICollectionItemDetailed> {
     const favorites = JSON.parse(localStorage.getItem('favorites'));
     favorites.push(item);
     localStorage.setItem('favorites', JSON.stringify(favorites));

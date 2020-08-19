@@ -27,17 +27,20 @@
 
       <div class="content__detail">
         <ul>
-          <li><span
-            class="content__detail--bold">Category:</span> {{ collectionItem?.artObject.objectTypes.join(' , ') }}
+          <li>
+            <span class="content__detail--bold">Category:</span>
+            <ul class="tags__list">
+              <li *ngFor="let categoryLink of collectionItem?.artObject.objectTypes">
+                <a routerLink="/" [queryParams]="{ ps: 10, p: 1, q: '', s: 'objecttype', type: categoryLink }">
+                  {{ categoryLink }}
+                </a>
+              </li>
+            </ul>
           </li>
           <li><span class="content__detail--bold">Artist:</span> {{ collectionItem?.artObject.principalMaker}} </li>
-          <li><span class="content__detail--bold">Dating:</span> {{ collectionItem?.artObject.dating.presentingDate }}
-          </li>
-          <li><span
-            class="content__detail--bold">Physical features:</span> {{ collectionItem?.artObject.physicalMedium}}
-          </li>
-          <li><span class="content__detail--bold">Material:</span> {{ collectionItem?.artObject.materials.join(' & ')}}
-          </li>
+          <li><span class="content__detail--bold">Dating:</span> {{ collectionItem?.artObject.dating.presentingDate }}</li>
+          <li><span class="content__detail--bold">Physical features:</span> {{ collectionItem?.artObject.physicalMedium}}</li>
+          <li><span class="content__detail--bold">Material:</span> {{ collectionItem?.artObject.materials.join(' & ')}}</li>
           <li><span class="content__detail--bold">Measurements:</span> {{ collectionItem?.artObject.subTitle }} </li>
         </ul>
 
@@ -48,7 +51,34 @@
         </p>
         <ul class="tags__list">
           <li *ngFor="let tagWhat of collectionItem?.artObject.classification.iconClassDescription">
-            {{ tagWhat }}
+            <a routerLink="/"
+               [queryParams]="{ ps: 10, p: 1, q: '', s: 'objecttype', 'tagWhat': tagWhat }">
+              {{ tagWhat }}
+            </a>
+          </li>
+        </ul>
+
+        <p class="content__detail--bold"
+           *ngIf="collectionItem?.artObject.classification.places.length">
+          Where:
+        </p>
+        <ul class="tags__list">
+          <li *ngFor="let tagWhere of collectionItem?.artObject.classification.places">
+            <a routerLink="/" [queryParams]="{ ps: 10, p: 1, q: '', s: 'objecttype', 'tagWhere': tagWhere }">
+              {{ tagWhere }}
+            </a>
+          </li>
+        </ul>
+
+        <p class="content__detail--bold"
+           *ngIf="collectionItem?.artObject.classification.people.length">
+          Who:
+        </p>
+        <ul class="tags__list">
+          <li *ngFor="let tagWho of collectionItem?.artObject.classification.people">
+            <a routerLink="/" [queryParams]="{ ps: 10, p: 1, q: '', s: 'objecttype', 'tagWho': tagWho }">
+              {{ tagWho }}
+            </a>
           </li>
         </ul>
 
@@ -62,25 +92,6 @@
           </li>
         </ul>
 
-        <p class="content__detail--bold"
-           *ngIf="collectionItem?.artObject.classification.places.length">
-          Where:
-        </p>
-        <ul class="tags__list">
-          <li *ngFor="let tagWhere of collectionItem?.artObject.classification.places">
-            {{ tagWhere }}
-          </li>
-        </ul>
-
-        <p class="content__detail--bold"
-           *ngIf="collectionItem?.artObject.classification.people.length">
-          Who:
-        </p>
-        <ul class="tags__list">
-          <li *ngFor="let tagWho of collectionItem?.artObject.classification.people">
-            {{ tagWho }}
-          </li>
-        </ul>
       </div>
     </div>
   </ng-container>

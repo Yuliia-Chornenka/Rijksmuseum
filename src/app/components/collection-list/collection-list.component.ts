@@ -24,6 +24,10 @@ export class CollectionListComponent implements OnInit {
   @Input() pageSizeOptions: [ number ];
   @Input() query: string;
   @Input() sortField: string;
+  @Input() type: string;
+  @Input() tagWhat: string;
+  @Input() tagWhere: string;
+  @Input() tagWho: string;
   @Input() getNextPageCollection: (event) => PageEvent;
   @Input() isFavoriteOpen: boolean;
   pageEvent: PageEvent;
