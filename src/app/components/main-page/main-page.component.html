@@ -1,24 +1,31 @@
+<app-header [isFavoriteBtn]="true"
+            (collectionFavorites)="getCollectionFavorites($event)">
+</app-header>
+
 <section class="container">
   <app-sort-search-form
-    (searchedCollectionEvent)="getSearchedCollection($event)">
+    (searchedCollectionEvent)="getSearchedCollection($event)"
+    [isFavoriteOpen]="isFavoriteOpen">
   </app-sort-search-form>
 
   <mat-spinner class="spinner" *ngIf="isDataLoading"></mat-spinner>
 
-  <p *ngIf="!searchedCollectionCount" class="no-data">
+  <p *ngIf="!searchedCollectionCount && !isDataLoading" class="no-data">
     No art object could be found by your query:
     <span class="no-data__query"> {{ query }} </span>
   </p>
 
   <app-collection-list *ngIf="!isDataLoading"
-    [collectionList]="collectionList"
-    [length]="length"
-    [pageSize]="pageSize"
-    [pageNumber]="pageNumber"
-    [pageSizeOptions]="pageSizeOptions"
-    [query]="query"
-    [sortField]="sortField"
-    [getNextPageCollection]="getNextPageCollection"
+                       [collectionList]="collectionList"
+                       [collectionListDetailed]="collectionListDetailed"
+                       [isFavoriteOpen]="isFavoriteOpen"
+                       [length]="length"
+                       [pageSize]="pageSize"
+                       [pageNumber]="pageNumber"
+                       [pageSizeOptions]="pageSizeOptions"
+                       [query]="query"
+                       [sortField]="sortField"
+                       [getNextPageCollection]="getNextPageCollection"
   >
   </app-collection-list>
 </section>

@@ -7,6 +7,7 @@ import { ProjectService } from '../../services/project.service';
 import { ICollection } from '../../models/collection';
 import { ICollectionItem } from '../../models/collection-item';
 import { ISearchResults } from '../../models/search-results';
+import { ICollectionItemDetailed } from '../../models/collection-item-detailed';
 
 @Component({
   selector: 'app-main-page',
@@ -15,6 +16,7 @@ import { ISearchResults } from '../../models/search-results';
 })
 export class MainPageComponent implements OnInit, OnDestroy {
   collectionList: ICollectionItem[] = [];
+  collectionListDetailed: ICollectionItemDetailed[];
   length = 0;
   pageSize = 10;
   pageNumber = 1;
@@ -23,6 +25,8 @@ export class MainPageComponent implements OnInit, OnDestroy {
   query = '';
   searchedCollectionCount = 1;
   isDataLoading = false;
+  isFavoriteOpen: boolean;
+
 
   subscriptions: Subscription = new Subscription();
 
@@ -83,5 +87,11 @@ export class MainPageComponent implements OnInit, OnDestroy {
             { ps: this.pageSize, p: this.pageNumber, q: this.query, s: this.sortField }});
     }));
     return new PageEvent();
+  }
+
+  getCollectionFavorites(event: {collectionFavorites: ICollectionItemDetailed[]; isFavoriteOpen: boolean}): void {
+    this.collectionListDetailed = event.collectionFavorites;
+    this.isFavoriteOpen = event.isFavoriteOpen;
+    this.router.navigate(['/'], { queryParams: { ps: 10, p: 1, q: '', s: 'objecttype' }});
   }
 }

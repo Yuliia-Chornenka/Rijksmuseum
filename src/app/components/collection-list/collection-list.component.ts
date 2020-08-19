@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { ICollectionItem } from '../../models/collection-item';
 import { InformationPopupComponent } from '../information-popup/information-popup.component';
 import { ProjectService } from '../../services/project.service';
+import { ICollectionItemDetailed } from '../../models/collection-item-detailed';
 
 @Component({
   selector: 'app-collection-list',
@@ -16,6 +17,7 @@ import { ProjectService } from '../../services/project.service';
 export class CollectionListComponent implements OnInit {
 
   @Input() collectionList: ICollectionItem[];
+  @Input() collectionListDetailed: ICollectionItemDetailed[];
   @Input() length: number;
   @Input() pageSize: number;
   @Input() pageNumber: number;
@@ -23,6 +25,7 @@ export class CollectionListComponent implements OnInit {
   @Input() query: string;
   @Input() sortField: string;
   @Input() getNextPageCollection: (event) => PageEvent;
+  @Input() isFavoriteOpen: boolean;
   pageEvent: PageEvent;
   isLongTitle = false;
   subscriptions: Subscription = new Subscription();

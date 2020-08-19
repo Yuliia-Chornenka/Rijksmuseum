@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -18,8 +18,9 @@ export class SortSearchFormComponent implements OnInit, OnDestroy {
   pageSize = 10;
   pageNumber = 1;
   formSortSearch: FormGroup;
-  sortingFields = [ 'relevance', 'type', 'chronologically (oldest first)',
+  sortingFields = [ 'type', 'relevance', 'chronologically (oldest first)',
     'chronologically (newest first)', 'artist (a-z)', 'artist (z-a)' ];
+  @Input() isFavoriteOpen: boolean;
   @Output() searchedCollectionEvent = new EventEmitter<ISearchResults>();
 
   subscriptions: Subscription = new Subscription();
@@ -44,8 +45,6 @@ export class SortSearchFormComponent implements OnInit, OnDestroy {
 
       this.getSortField();
     });
-
-
   }
 
   ngOnDestroy() {
@@ -56,15 +55,14 @@ export class SortSearchFormComponent implements OnInit, OnDestroy {
     const {searchValue, sortByField} = this.formSortSearch.controls;
     const searchQuery = searchValue.value.toLowerCase();
     const sortField = getSortFieldValue(sortByField.value);
-
     this.subscriptions.add(this.projectService.getCollection(this.pageSize, this.pageNumber, sortField, searchQuery)
       .subscribe((searchedCollection: ICollection) => {
-           this.searchedCollectionEvent.emit({
-             searchedCollection,
-             searchQuery,
-             sortField
-           });
-         }));
+        this.searchedCollectionEvent.emit({
+          searchedCollection,
+          searchQuery,
+          sortField
+        });
+      }));
   }
 
 
@@ -84,7 +82,7 @@ export class SortSearchFormComponent implements OnInit, OnDestroy {
 }
 
 function getSortFieldValue(value) {
-  let sortField = '';
+  let sortField;
 
   switch (value.toLowerCase()) {
     case 'relevance':
@@ -113,7 +111,7 @@ function getSortFieldValue(value) {
 
 
 function getSortFieldQuery(valueQuery) {
-  let sortFieldQuery = '';
+  let sortFieldQuery;
 
   switch (valueQuery.toLowerCase()) {
     case 'relevance':

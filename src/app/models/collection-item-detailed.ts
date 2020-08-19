@@ -44,7 +44,7 @@ export interface ICollectionItemDetailed {
     normalizedColors: [];
     objectCollection: [];
     objectNumber: string;
-    objectTypes: [];
+    objectTypes: [string];
     physicalMedium: string;
     physicalProperties: []
     plaqueDescriptionDutch: string;

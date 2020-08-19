@@ -1,22 +1,53 @@
 <div class="collection">
-  <div *ngFor="let itemCollection of collectionList"
-       class="collection__item">
-    <img src="{{ itemCollection.headerImage.url ? itemCollection.headerImage.url : '/assets/no-image.png' }}"
-        alt="{{ itemCollection.title }}"
-        class="collection__item--img"
-         (mouseover)="getLongTitle($event)"
-         (click)="openDialog(itemCollection.objectNumber)"
-    >
-    <div class="collection__item--title">
-      {{ itemCollection.longTitle }}
+
+  <div *ngIf="isFavoriteOpen; then collectionDetailed else collection"></div>
+
+  <ng-template #collection>
+    <div *ngFor="let itemCollection of collectionList"
+         class="collection__item">
+      <img src="{{ itemCollection.headerImage.url ? itemCollection.headerImage.url : '/assets/no-image.png' }}"
+           alt="{{ itemCollection.title }}"
+           class="collection__item--img"
+           (mouseover)="getLongTitle($event)"
+           (click)="openDialog(itemCollection.objectNumber)"
+      >
+      <div class="collection__item--title">
+        {{ itemCollection.longTitle }}
+      </div>
     </div>
-  </div>
+  </ng-template>
+
+
+  <ng-template #collectionDetailed>
+
+    <p *ngIf="!collectionListDetailed.length"
+       class="no-favorites">
+      No favorite items yet.
+    </p>
+
+    <div *ngFor="let itemCollection of collectionListDetailed
+          | search:query
+          | sort:sortField:query"
+         class="collection__item">
+      <img
+        src="{{ itemCollection.artObject.webImage.url ? itemCollection.artObject.webImage.url : '/assets/no-image.png' }}"
+        alt="{{ itemCollection.artObject.title }}"
+        class="collection__item--img"
+        (mouseover)="getLongTitle($event)"
+        (click)="openDialog(itemCollection.artObject.objectNumber)"
+      >
+      <div class="collection__item--title">
+        {{ itemCollection.artObject.longTitle }}
+      </div>
+    </div>
+  </ng-template>
 </div>
 
-<mat-paginator [length]=length
+<mat-paginator *ngIf="!isFavoriteOpen"
+               [length]=length
                [pageSize]=pageSize
                [pageSizeOptions]=pageSizeOptions
                (page)="pageEvent = getNextPageCollection($event)"
                [pageIndex]="pageNumber - 1"
-               >
+>
 </mat-paginator>

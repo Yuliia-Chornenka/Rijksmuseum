@@ -5,8 +5,10 @@
         Rijksmuseum
       </a>
     </h1>
-    <button mat-flat-button color="primary"
-      (click)="goToFavorites()">
+    <button *ngIf="isFavoriteBtn"
+            mat-flat-button
+            [color]="isFavoriteOpen ? 'primary' : ''"
+            (click)="goToFavorites()">
       Favorite
     </button>
   </div>
