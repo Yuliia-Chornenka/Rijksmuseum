@@ -47,3 +47,89 @@
 .spinner {
   margin: 40px auto;
 }
+
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .content {
+
+    &__wrapper {
+      width: 208px;
+    }
+
+    &__img {
+      width: 40%;
+    }
+
+    &__title {
+      font-size: 14px;
+    }
+
+    &__description {
+      font-size: 12px;
+
+      &-wrapper {
+        width: 55%;
+      }
+    }
+  }
+
+  .btn {
+    &__wrapper {
+      flex-wrap: wrap;
+    }
+
+    &__favorite {
+      width: 100%;
+      text-align: left;
+      margin-bottom: 10px;
+    }
+
+    &__close {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  .content {
+
+    &__wrapper {
+      width: 293px;
+    }
+
+    &__img {
+      width: 40%;
+    }
+
+    &__description {
+      &-wrapper {
+        width: 55%;
+      }
+    }
+  }
+
+  .btn {
+    &__wrapper {
+      flex-wrap: wrap;
+    }
+
+    &__favorite {
+      width: 100%;
+      text-align: left;
+      margin-bottom: 10px;
+    }
+
+    &__close {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .content {
+
+    &__wrapper {
+      width: 565px;
+    }
+  }
+}
